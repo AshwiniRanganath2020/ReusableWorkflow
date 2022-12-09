@@ -1,11 +1,10 @@
 name: build
-
 on:
   workflow_call:
-    inputs:./shared-workflows/.trivyignore
-      image_name:
+    inputs:
+     image_name:
         required: true
-        type: string
+          type: string
       tag: 
         type: string
     secrets:
