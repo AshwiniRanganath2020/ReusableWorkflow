@@ -28,7 +28,7 @@ jobs:
           git clone https://${{secrets.Github-new-token}}@github.com/AshwiniRanganath2020/ReusableWorkflow.git
       - name: copy the docker file to template directory
         run: |
-          cp ${{ inputs.ashwiniranganath2020/trivyscan }}/Dockerfile ./AshwiniRanganath2020/ReusableWorkflow.git  
+          cp ${{ inputs.docker_file_path }}/Dockerfile ./AshwiniRanganath2020/ReusableWorkflow.git  
       - name: Install Trivy CLI
         run: |
           curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.31.3
