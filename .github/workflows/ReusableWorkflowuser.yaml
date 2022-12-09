@@ -18,8 +18,8 @@ jobs:
   docker:
     uses: AshwiniRanganath2020/ReusableWorkflow/.github/workflows/build.yml@main
     with:
-      image_name: my-awesome-app
-      tag: $GITHUB_RUN_NUMBER
+      image_name: ashwiniranganath2020/trivyscan
+      tag: ashwiniranganath2020/trivyscan
     secrets:
       registry_username: ${{secrets.REGISTRY_USERNAME}}
       registry_password: ${{secrets.REGISTRY_PASSWORD}}
