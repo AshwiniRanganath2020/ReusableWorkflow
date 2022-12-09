@@ -28,13 +28,19 @@ on:
         description: "github username"
 
 jobs:
-  do-it:
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Event Info
+        if: github.actor != 'dependabot[bot]' && !(github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        run: |
+          echo "::warning  ::Code changes wont be deployed for pull requests."  
+      - name: Clear GitHub Workspace
+        run: rm -fr $GITHUB_WORKSPACE && mkdir $GITHUB_WORKSPACE
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
         
       - name: Build docker image from Dockerfile (Optional)
         run: |
