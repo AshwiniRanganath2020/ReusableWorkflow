@@ -42,7 +42,7 @@ jobs:
       
       - name: Run Trivy scan for filesystem and generate html report(Trivy will look for vulnerabilities based on lock files such as Gemfile.lock and package-lock.json)
         run: |
-          /usr/local/bin/trivy fs --format template --template "@./shared-workflows/html.tpl" --ignorefile "./ReusableWorkflow/.trivyignore" -o Report2.html ${{ inputs.Packages_lock }}
+          /usr/local/bin/trivy fs --format template --template "@./ReusableWorkflow/html.tpl" --ignorefile "./ReusableWorkflow/.trivyignore" -o Report2.html ${{ inputs.Packages_lock }}
       
       - name: Run Trivy scan for dockerfile 
         run: |
@@ -84,7 +84,7 @@ jobs:
           /usr/local/bin/trivy fs --exit-code 1 --severity CRITICAL,HIGH --ignore-unfixed --ignorefile "./shared-workflows/.trivyignore"  ${{ inputs.Packages_lock }}      
       - name: check for Misconfig in Dockerfile (Optional)
         run: |
-          /usr/local/bin/trivy conf --exit-code 1 --severity CRITICAL --policy ./shared-workflows/policies  --namespaces user ./shared-workflows/configs
+          /usr/local/bin/trivy conf --exit-code 1 --severity CRITICAL --policy ./ReusableWorkflow/policies  --namespaces user ./shared-workflows/configs
       - name: Docker Login
         uses: docker/login-action@v2
         with:
