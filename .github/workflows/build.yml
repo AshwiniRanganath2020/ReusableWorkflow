@@ -6,13 +6,26 @@ on:
       image_name:
         required: true
         type: string
-      tag: 
+      # GitHub Repo Name		
+      GHCR_REPO:
+        required: true
+        type: string	
+      # Path to the Dockerfile. (default {context}/Dockerfile)
+      docker_file_path:
+        required: true
         type: string
-    secrets:
-      registry_username:
+      image_tag:
         required: true
-      registry_password:
+        type: string
+        default: "0"
+      Packages_lock:
+        type: string
         required: true
+        description: "location of lock file Trivy will look for vulnerabilities based on lock files such as Gemfile.lock and package-lock.json"    
+      username:
+        type: string
+        required: true
+        description: "github username"
 
 jobs:
   do-it:
