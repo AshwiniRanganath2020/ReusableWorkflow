@@ -23,7 +23,7 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      - name: copy template file from  shared-workflows repo
+      - name: copy template file from  ReusableWorkflow repo
         run: |
           git clone https://${{ secrets.GH_TOKEN }}@github.com/AshwiniRanganath2020/ReusableWorkflow.git
       - name: copy the docker file to template directory
