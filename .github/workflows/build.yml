@@ -8,10 +8,7 @@ on:
         type: string
       tag: 
         type: string
-      Packages_lock:
-        type: string
-        required: true
-        description: "location of lock file Trivy will look for vulnerabilities based on lock files such as Gemfile.lock and package-lock.json" 
+      
     secrets:
       REGISTRY_USERNAME:
         required: true
