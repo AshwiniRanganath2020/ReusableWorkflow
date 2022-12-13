@@ -83,7 +83,7 @@ jobs:
      
       - name: Check for filesystem (Trivy will look for vulnerabilities based on lock files such as Gemfile.lock and package-lock.json)
         run: |
-          /usr/local/bin/trivy fs --exit-code 1 --severity CRITICAL,HIGH --ignore-unfixed --ignorefile "./ReusableWorkflow/.trivyignore"  ${{ inputs.Packages_lock }}      
+          /usr/local/bin/trivy -q fs . --exit-code 1 --severity CRITICAL,HIGH --ignore-unfixed --ignorefile "./ReusableWorkflow/.trivyignore"  ${{ inputs.Packages_lock }}      
       - name: check for Misconfig in Dockerfile (Optional)
         run: |
           /usr/local/bin/trivy conf --exit-code 1 --severity CRITICAL --policy ./ReusableWorkflow/policies  --namespaces user ./ReusableWorkflow/configs
