@@ -44,7 +44,7 @@ jobs:
       
       - name: Run Trivy scan for filesystem and generate html report(Trivy will look for vulnerabilities based on lock files such as Gemfile.lock and package-lock.json)
         run: |
-          /usr/local/bin/trivy fs --format template --template "@./ReusableWorkflow/html.tpl" --ignorefile "./ReusableWorkflow/.trivyignore" -o Report2.html ${{ inputs.Packages_lock }}
+          /usr/local/bin/trivy -q fs . --format template --template "@./ReusableWorkflow/html.tpl" --ignorefile "./ReusableWorkflow/.trivyignore" -o Report2.html ${{ inputs.Packages_lock }}
       
       - name: Run Trivy scan for dockerfile 
         run: |
