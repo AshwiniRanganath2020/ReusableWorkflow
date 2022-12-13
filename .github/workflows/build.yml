@@ -92,7 +92,7 @@ jobs:
         with:
           
           username: ashwiniranganath2020
-          password: AshwiniRanganath2020 
+          password: ${{ secrets.GH_TOKEN }} 
       - name: Push Docker Image to registry
         run: |
           docker image push ${{ inputs.GHCR_REPO }}${{ inputs.image_name }}
