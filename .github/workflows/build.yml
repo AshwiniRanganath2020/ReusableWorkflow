@@ -89,10 +89,13 @@ jobs:
           /usr/local/bin/trivy conf --exit-code 1 --severity CRITICAL --policy ./ReusableWorkflow/policies  --namespaces user ./ReusableWorkflow/configs
       - name: Docker Login
         uses: docker/login-action@v2
-        with:
-          
+        with:          
           username: ashwiniranganath2020
-          password: ${{ secrets.GH_TOKEN }} 
-      - name: Push Docker Image to registry
-        run: |
-          docker image push ${{ inputs.GHCR_REPO }}${{ inputs.image_name }}
+          password: AshwiniRanganath2020 
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/trivyscan:latest
