@@ -9,6 +9,12 @@ on:
       tag: 
         type: string
         
+    secrets:
+      REGISTRY_USERNAME:
+        required: true
+      REGISTRY_PASSWORD:
+        required: true
+        
         # GitHub Repo Name		
       GHCR_REPO:
         required: true
@@ -33,11 +39,7 @@ on:
         required: true
         description: "github username"
       
-    secrets:
-      REGISTRY_USERNAME:
-        required: true
-      REGISTRY_PASSWORD:
-        required: true
+    
 
 jobs:
   do-it:
