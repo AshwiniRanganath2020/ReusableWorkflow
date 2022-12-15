@@ -10,9 +10,9 @@ on:
         type: string
       
     secrets:
-      DOCKER_HUB_USERNAME:
+      REGISTRY_USERNAME:
         required: true
-      DOCKER_HUB_ACCESS_TOKEN:
+      REGISTRY_PASSWORD:
         required: true
 
 jobs:
@@ -90,8 +90,8 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v2
         with:          
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} 
+          username: ashwiniranganath2020
+          password: AshwiniRanganath2020 
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
