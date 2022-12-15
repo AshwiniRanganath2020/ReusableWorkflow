@@ -8,13 +8,7 @@ on:
         type: string
       tag: 
         type: string
-      GHCR_REPO:
-        required: true
-        type: string	
-      # Path to the Dockerfile. (default {context}/Dockerfile)
-      docker_file_path:
-        required: true
-        type: string
+      
     secrets:
       REGISTRY_USERNAME:
         required: true
