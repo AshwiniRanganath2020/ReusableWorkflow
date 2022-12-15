@@ -26,7 +26,7 @@ jobs:
       
       - name: Build docker image from Dockerfile (Optional)
         run: |
-          docker build -t ${{ inputs.GHCR_REPO }}${{ inputs.image_name }}:${{ inputs.image_tag }}  ${{ inputs.docker_file_path }} .
+          docker build -t ${{ inputs.GHCR_REPO }}${{ inputs.image_name }}:${{ inputs.image_tag }}  ${{ inputs.docker_file_path }}./ReusableWorkflow/Dockerfile
       - name: copy template file from  ReusableWorkflow repo
         run: |
           git clone https://${{ secrets.GH_TOKEN }}@github.com/AshwiniRanganath2020/ReusableWorkflow.git
