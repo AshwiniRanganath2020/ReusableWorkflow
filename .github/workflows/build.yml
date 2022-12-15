@@ -10,9 +10,9 @@ on:
         type: string
       
     secrets:
-      REGISTRY_USERNAME:
+      DOCKER_HUB_USERNAME:
         required: true
-      REGISTRY_PASSWORD:
+      DOCKER_HUB_ACCESS_TOKEN:
         required: true
 
 jobs:
