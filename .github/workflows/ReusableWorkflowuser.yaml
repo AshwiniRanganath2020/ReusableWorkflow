@@ -21,7 +21,7 @@ jobs:
       image_name: ashwiniranganath2020/trivyscan
       image_tag: latest
       GHCR_REPO: https://hub.docker.com/
-      docker_file_path: AshwiniRanganath2020/ReusableWorkflow
+      docker_file_path: ./ReusableWorkflow
       Packages_lock: AshwiniRanganath2020/ReusableWorkflow/package-lock.json
     secrets:
       registry_username: ${{secrets.DOCKER_HUB_USERNAME}}
