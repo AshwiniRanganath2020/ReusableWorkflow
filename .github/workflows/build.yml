@@ -8,7 +8,13 @@ on:
         type: string
       tag: 
         type: string
-      
+      GHCR_REPO:
+        required: true
+        type: string	
+      # Path to the Dockerfile. (default {context}/Dockerfile)
+      docker_file_path:
+        required: true
+        type: string
     secrets:
       REGISTRY_USERNAME:
         required: true
@@ -23,7 +29,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run a one-line script
         run: echo Hello, world!
-
+      
+      - name: Build docker image from Dockerfile (Optional)
+        run: |
+          docker build -t ${{ inputs.GHCR_REPO }}${{ inputs.image_name }}:${{ inputs.image_tag }}  ${{ inputs.docker_file_path }} .
       - name: copy template file from  ReusableWorkflow repo
         run: |
           git clone https://${{ secrets.GH_TOKEN }}@github.com/AshwiniRanganath2020/ReusableWorkflow.git
@@ -90,12 +99,12 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v2
         with:          
-          username: ashwiniranganath2020
-          password: AshwiniRanganath2020 
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ashwiniranganath2020/trivyscan:1.0
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/trivyscan:1.0
