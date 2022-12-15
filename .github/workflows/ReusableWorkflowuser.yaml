@@ -19,7 +19,7 @@ jobs:
     uses: AshwiniRanganath2020/ReusableWorkflow/.github/workflows/build.yml@main
     with:
       image_name: ashwiniranganath2020/trivyscan
-      image_tag: 2
+      image_tag: ashwiniranganath2020/trivyscan
       GHCR_REPO: https://hub.docker.com/
       docker_file_path: ./ReusableWorkflow
       Packages_lock: AshwiniRanganath2020/ReusableWorkflow/package-lock.json
