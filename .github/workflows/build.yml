@@ -17,7 +17,7 @@ on:
       image_tag:
         required: true
         type: string
-        default: "0"
+        default: "latest"
       Packages_lock:
         type: string
         required: true
