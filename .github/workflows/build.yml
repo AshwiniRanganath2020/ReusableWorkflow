@@ -2,7 +2,11 @@ name: build
 
 on:
 
-  workflow_call:
+ push:
+    branches:
+      - "main"
+
+ workflow_call:
   
      inputs:
       image_name: 
@@ -16,16 +20,6 @@ on:
         required: true
       REGISTRY_PASSWORD:
         required: true
-  push:
-    branches:
-      - "main"
-      -  'build.yml'
-  pull_request:
-      branches:
-      - "main"
-      - 'build.yml'
-  
-   
  
 
 jobs:
