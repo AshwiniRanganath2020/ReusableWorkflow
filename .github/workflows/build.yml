@@ -1,19 +1,32 @@
 name: build
 
 on:
+
   workflow_call:
-    inputs:
+  
+     inputs:
       image_name: 
         required: true
         type: string
       tag: 
         type: string
       
-    secrets:
+     secrets:
       REGISTRY_USERNAME:
         required: true
       REGISTRY_PASSWORD:
         required: true
+  push:
+    branches:
+      - "main"
+      -  'build.yml'
+  pull_request:
+      branches:
+      - "main"
+      - 'build.yml'
+  
+   
+ 
 
 jobs:
   do-it:
@@ -23,6 +36,26 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run a one-line script
         run: echo Hello, world!
+        
+      - name: Run OSS Scan - BackDuck
+        uses: synopsys-sig/detect-action@v0.3.3
+        continue-on-error: true
+        env:
+          DETECT_PROJECT_NAME: "AshwiniRanganath2020"
+          DETECT_PROJECT_VERSION_NAME: "1.0.0"
+          DETECT_PROJECT_VERSION_LICENSE: "Baker Hughes Proprietary License"
+          DETECT_PROJECT_GROUP_NAME: "IAM-Projects"
+          DETECT_PROJECT_TAGS: "BentlyNevada,GitHub"
+          DETECT_DETECTOR_SEARCH_DEPTH: 10
+          DETECT_DETECTOR_SEARCH_CONTINUE: true
+          DETECT_DIAGNOSTIC: true
+        with:
+         scan-mode: INTELLIGENT
+         github-token: ${{ secrets.GH_TOKEN }}
+         detect-version: 8.2.0
+         blackduck-url: ${{ secrets.BLACKDUCK_URL }}
+         blackduck-api-token: ${{ secrets.BLACKDUCK_TOKEN }}
+
 
       - name: copy template file from  ReusableWorkflow repo
         run: |
