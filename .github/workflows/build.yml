@@ -38,7 +38,7 @@ jobs:
           DETECT_PROJECT_NAME: "AshwiniRanganath2020"
           DETECT_PROJECT_VERSION_NAME: "1.0.0"
         #  DETECT_PROJECT_VERSION_LICENSE: "Baker Hughes Proprietary License"
-          DETECT_PROJECT_GROUP_NAME: "IAM-Projects"
+          DETECT_PROJECT_GROUP_NAME: "IAM-Projects-Project Managers"
          # DETECT_PROJECT_TAGS: "BentlyNevada,GitHub"
           DETECT_DETECTOR_SEARCH_DEPTH: 10
           DETECT_DETECTOR_SEARCH_CONTINUE: true
